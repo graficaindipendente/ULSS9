@@ -132,7 +132,7 @@ body {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
   font-weight: 300; }
 h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
 h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
@@ -158,9 +158,9 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #1EAEDB; }
+  color: #26aaea; }
 a:hover {
-  color: #0FA0CE; }
+  color: #129adf; }
 
 
 /* Buttons
@@ -219,7 +219,7 @@ input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   color: #FFF;
-  background-color: #FFC018;
+  background-color: #929292;
   border-color: #4DC7CB; }
 
 
@@ -229,8 +229,8 @@ input[type="button"].button-primary:focus {
   input[type="reset"].button-link,
   input[type="button"].button-link {
     color: #000;
-    background-color: #FFC018;
-    border-color: #FFC018; }
+    background-color: #c9c9c9;
+    border-color: #808080; }
   .button.button-link:hover,
   button.button-link:hover,
   input[type="submit"].button-link:hover,
@@ -242,8 +242,8 @@ input[type="button"].button-primary:focus {
   input[type="reset"].button-link:focus,
   input[type="button"].button-link:focus {
     color: #000;
-    background-color: #FFC018;
-    border-color: #FFC018; }
+    background-color: #666666;
+    border-color: #353535; }
 
 
 /* Forms
@@ -257,11 +257,11 @@ input[type="url"],
 input[type="password"],
 textarea,
 select {
-  height: 38px;
+  height: 90px;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: #fff;
   border: 1px solid #D1D1D1;
-  border-radius: 4px;
+  border-radius: 14px;
   box-shadow: none;
   box-sizing: border-box; }
 /* Removes awkward default styles on some inputs for iOS */
@@ -277,7 +277,8 @@ textarea {
      -moz-appearance: none;
           appearance: none; }
 textarea {
-  min-height: 65px;
+  width: 300px;
+  height: 300px;
   padding-top: 6px;
   padding-bottom: 6px; }
 input[type="email"]:focus,
@@ -289,7 +290,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33C3F0;
+  border: 1px solid #000;
   outline: 0; }
 label,
 legend {
@@ -330,7 +331,7 @@ li {
 /* Code
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 code {
-  padding: .2rem .5rem;
+  padding: .5rem .9rem;
   margin: 0 .2rem;
   font-size: 90%;
   white-space: nowrap;
