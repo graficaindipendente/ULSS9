@@ -105,8 +105,9 @@ _________
       <a class="button" href="https://drive.google.com/drive/folders/1UTNuIJY8DBwqva2ya7PLgbxz4AmX-bjq" target="_blank">Deposito Negrar (drive)</a><br><br>
 
   <iframe src="https://www.google.com/maps/d/embed?mid=1dDXb28c8b5aZ7JhCUIjd-fTz9z8Jovc&ehbc=2E312F" width="900" height="480"></iframe><br><br>
- <br> <br> <br>
+
   <textarea name="script" id="java">
+►►► ACCETTA
 javascript: (function() {
 var date = new Date();
 var day = date.getDate().toString().padStart(2, '0');
@@ -114,7 +115,7 @@ var month = (date.getMonth() + 1).toString().padStart(2, '0');
 var year = date.getFullYear();
 var hours = date.getHours().toString().padStart(2, '0');
 var minutes = date.getMinutes().toString().padStart(2, '0');
-  var formattedDate = 'AP ' + day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente ACCETTA data e struttura letto note';
+var formattedDate = 'AP ' + day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente ACCETTA data e struttura letto note';
 var event = new KeyboardEvent('input', {
 bubbles: true,
 cancelable: true,
@@ -130,12 +131,9 @@ activeElement.dispatchEvent(event);
 navigator.clipboard.writeText(formattedDate).then(function() {}, function(err) {});
 }
 })();
-
-
+►►► ACCETTA
 javascript: (function() { var date = new Date(); var day = date.getDate().toString().padStart(2, '0'); var month = (date.getMonth() + 1).toString().padStart(2, '0'); var year = date.getFullYear(); var hours = date.getHours().toString().padStart(2, '0'); var minutes = date.getMinutes().toString().padStart(2, '0'); var formattedDate = 'AP ' + day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente ACCETTA data e struttura letto note'; var event = new KeyboardEvent('input', { bubbles: true, cancelable: true, key: formattedDate, keyCode: 0, which: 0 }); var activeElement = document.activeElement; if (activeElement && (activeElement.tagName === 'TEXTAREA' || (activeElement.tagName === 'INPUT' && activeElement.type === 'text'))) { activeElement.value += formattedDate; activeElement.dispatchEvent(event); } else { navigator.clipboard.writeText(formattedDate).then(function() {}, function(err) {}); } })();
-
-
-
+►►► RIFIUTA
 javascript: (function() {
 var date = new Date();
 var day = date.getDate().toString().padStart(2, '0');
@@ -158,9 +156,9 @@ activeElement.dispatchEvent(event);
 navigator.clipboard.writeText(formattedDate).then(function() {}, function(err) {});
 }
 })();
-
+►►► RIFIUTA
 javascript: (function() { var date = new Date(); var day = date.getDate().toString().padStart(2, '0'); var month = (date.getMonth() + 1).toString().padStart(2, '0'); var year = date.getFullYear(); var hours = date.getHours().toString().padStart(2, '0'); var minutes = date.getMinutes().toString().padStart(2, '0'); var formattedDate = 'AP ' + day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare 94';var event = new KeyboardEvent('input', { bubbles: true, cancelable: true, key: formattedDate, keyCode: 0, which: 0 }); var activeElement = document.activeElement; if (activeElement && (activeElement.tagName === 'TEXTAREA' || (activeElement.tagName === 'INPUT' && activeElement.type === 'text'))) { activeElement.value += formattedDate; activeElement.dispatchEvent(event); } else { navigator.clipboard.writeText(formattedDate).then(function() {}, function(err) {}); } })();
-
+►►► NON RISPONDE
 javascript: (function() {
 var date = new Date();
 var day = date.getDate().toString().padStart(2, '0');
@@ -184,9 +182,9 @@ activeElement.dispatchEvent(event);
 navigator.clipboard.writeText(formattedDate).then(function() {}, function(err) {});
 }
 })();
-
+►►► NON RISPONDE
 javascript: (function() { var date = new Date(); var day = date.getDate().toString().padStart(2, '0'); var month = (date.getMonth() + 1).toString().padStart(2, '0'); var year = date.getFullYear(); var hours = date.getHours().toString().padStart(2, '0'); var minutes = date.getMinutes().toString().padStart(2, '0'); var formattedDate = 'AP ' + day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente NON RISPONDE'; var event = new KeyboardEvent('input', { bubbles: true, cancelable: true, key: formattedDate, keyCode: 0, which: 0 }); var activeElement = document.activeElement; if (activeElement && (activeElement.tagName === 'TEXTAREA' || (activeElement.tagName === 'INPUT' && activeElement.type === 'text'))) { activeElement.value += formattedDate; activeElement.dispatchEvent(event); } else { navigator.clipboard.writeText(formattedDate).then(function() {}, function(err) {}); } })();
-</textarea> <br>
+</textarea> <br> <br> <br> <br>
 
 
 
