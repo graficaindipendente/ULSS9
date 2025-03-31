@@ -188,10 +188,13 @@ navigator.clipboard.writeText(formattedDate).then(function() {}, function(err) {
 ►►► NON RISPONDE
 javascript: (function() { var date = new Date(); var day = date.getDate().toString().padStart(2, '0'); var month = (date.getMonth() + 1).toString().padStart(2, '0'); var year = date.getFullYear(); var hours = date.getHours().toString().padStart(2, '0'); var minutes = date.getMinutes().toString().padStart(2, '0'); var formattedDate = 'AP ' + day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente NON RISPONDE'; var event = new KeyboardEvent('input', { bubbles: true, cancelable: true, key: formattedDate, keyCode: 0, which: 0 }); var activeElement = document.activeElement; if (activeElement && (activeElement.tagName === 'TEXTAREA' || (activeElement.tagName === 'INPUT' && activeElement.type === 'text'))) { activeElement.value += formattedDate; activeElement.dispatchEvent(event); } else { navigator.clipboard.writeText(formattedDate).then(function() {}, function(err) {}); } })();
 </textarea> <br> 
-    <textarea name="script2" id="java2">
+    <textarea name="AP.note" id="AP.note">
 javascript:(function(){
 
-  var message = "Scegli un'azione:\n" + "𝟭 ACCETTA 11 mail \n" + "𝟮 RIFIUTA\n" + "𝟯 NON RISPONDE 31 con mess segr 32 no segr \n" + "𝟰 NOTA";
+  var message = "➡ 𝟭×ACCETTA ↪𝟭𝟭×Mail \n" + 
+				"➡ 𝟮×RIFIUTA\n" + 
+				"➡ 𝟯×NON RISP ↪𝟯𝟭×Segr ↪𝟯𝟮×NoSegr ↪𝟯𝟯×RispMa\n" + 
+				"➡ 𝟰×NOTA ↪𝟰𝟭×AltroOp ↪𝟰𝟮×Recapiti";
   var choice = prompt(message);
   if(choice === null) return; 
   
@@ -243,9 +246,20 @@ javascript:(function(){
 	  	      case "32":
       formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente NON RISPONDE: senza segreteria';
       break;
+	  	  	      case "33":
+      formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RISPONDE ma ';
+      break;
     case "4":
+      formatted = 'AP ' + day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Nota: ';
+      break;
+	      case "41":
       formatted = 'AP ' + day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Nota altro operatore: ';
       break;
+	  	      case "42":
+      formatted = 'AP ' + day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Aggiunto recapiti telefonici: ';
+      break;
+	  
+	  
     default:
       alert("Scelta non valida.");
       return;
