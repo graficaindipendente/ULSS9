@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Mostra codice JS</title>
+  <style>
+    pre {
+      background-color: #f4f4f4;
+      padding: 15px;
+      border: 1px solid #ccc;
+      overflow-x: auto;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Codice del file script.js:</h2>
+  <pre id="codice"></pre>
+
+  <script>
+    fetch('NoteJS_D3.js')
+      .then(response => response.text())
+      .then(data => {
+        // Sicurezza: evita interpretazioni HTML
+        document.getElementById('codice').textContent = data;
+      })
+      .catch(error => {
+        document.getElementById('codice').textContent = "Errore nel caricamento: " + error;
+      });
+  </script>
+
+</body>
+</html>
