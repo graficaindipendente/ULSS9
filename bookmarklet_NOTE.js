@@ -1,6 +1,6 @@
 javascript:(function(){
-    var message = "➡ 𝟭𝟬.𝗔𝗖𝗖𝗘𝗧𝗧𝗔│𝟭𝟭.Mail│𝟭𝟮.Mail+Modulo│𝟭𝟯.Mail+Prep.\n ➡ 𝟮𝟬.𝗥𝗜𝗙𝗜𝗨𝗧𝗔│𝟮𝟭.LP│𝟮𝟮.lontano│𝟮𝟯.lavoro \n " + 
-          "➡ 𝟯𝟬.𝗡𝗢𝗡𝗥𝗜𝗦𝗣│𝟯𝟭.MsgSegr│𝟯𝟮.NoMsgSegr│𝟯𝟯.SenzaSegr \n 𝟯𝟰.RispMa│­­𝟯𝟱.NoParte│𝟯𝟲.NoReca│𝟯𝟯.NoCampo│𝟯𝟴.Bloccato\n" + 
+    var message = "➡ 𝟭𝟬.𝗔𝗖𝗖𝗘𝗧𝗧𝗔│𝟭𝟭.Mail│𝟭𝟮.Mail+Modulo│𝟭𝟯.Mail+Prep.\n➡ 𝟮𝟬.𝗥𝗜𝗙𝗜𝗨𝗧𝗔│𝟮𝟭.LP│𝟮𝟮.lontano│𝟮𝟯.lavoro \n" + 
+          "➡ 𝟯𝟬.𝗡𝗢𝗡𝗥𝗜𝗦𝗣│𝟯𝟭.MsgSegr│𝟯𝟮.NoMsgSegr│𝟯𝟯.SenzaSegr \n𝟯𝟰.RispMa│­­𝟯𝟱.NoParte│𝟯𝟲.NoReca│𝟯𝟯.NoCampo│𝟯𝟴.Bloccato\n" + 
           "➡ 𝟰𝟬.𝗡𝗢𝗧𝗘│𝟰𝟭.AltroOp│𝟰𝟮.AggRec│𝟰𝟯.NoRec  \n ᴬᴸᴱˢˢᴬᴺᴰᴿᴼ ᴾᴵᴼⱽᴬᴺ ᴺᴼᵀᴱ ᴬᴰᴰᴼᴺ";
     var choice = prompt(message);
     if(choice === null) return; 
