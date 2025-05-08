@@ -32,6 +32,9 @@ javascript:(function(){
     var formatted;
 
     switch(choice.trim()){
+		          case "1":
+        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente ACCETTA data e struttura letto note';
+        break;
       case "10":
         formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente ACCETTA data e struttura letto note';
         break;
@@ -43,6 +46,10 @@ javascript:(function(){
         break;
 				      case "13":
         formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente ACCETTA data e struttura letto note + MAIL con allegato preparazione';
+        break;
+		          case "2":
+        var extraText20 = prompt("CODICE DISDETTA ultime 4 cifre");
+        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare ' + (extraText20 ? '96' + extraText20 : "") ;
         break;
       case "20":
         var extraText20 = prompt("CODICE DISDETTA ultime 4 cifre");
@@ -62,7 +69,9 @@ javascript:(function(){
         formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare ' + (extraText20 ? '96' + extraText20 : "") + ' per problematiche lavorative.';
         break;
 		
-		
+	      case "3":
+        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente NON RISPONDE';
+        break;	
       case "30":
         formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente NON RISPONDE';
         break;
