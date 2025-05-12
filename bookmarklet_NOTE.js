@@ -49,24 +49,24 @@ javascript:(function(){
         break;
 		          case "2":
         var extraText20 = prompt("CODICE DISDETTA ultime 4 cifre");
-        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare ' + (extraText20 ? '96' + extraText20 : "") ;
+        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare ' + (extraText20 ? '97' + extraText20 : "") ;
         break;
       case "20":
         var extraText20 = prompt("CODICE DISDETTA ultime 4 cifre");
-        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare ' + (extraText20 ? '96' + extraText20 : "") ;
+        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare ' + (extraText20 ? '97' + extraText20 : "") ;
         break;
 		
 		      case "21":
         var extraText20 = prompt("CODICE DISDETTA ultime 4 cifre");
-        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare ' + (extraText20 ? '96' + extraText20 : "") + ': già eseguito in LP';
+        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare ' + (extraText20 ? '97' + extraText20 : "") + ': già eseguito in LP';
         break;
 		      case "22":
         var extraText20 = prompt("CODICE DISDETTA ultime 4 cifre");
-        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare ' + (extraText20 ? '96' + extraText20 : "") + ': troppo lontano.';
+        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare ' + (extraText20 ? '97' + extraText20 : "") + ': troppo lontano.';
         break;
 		      case "23":
         var extraText20 = prompt("CODICE DISDETTA ultime 4 cifre");
-        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare ' + (extraText20 ? '96' + extraText20 : "") + ' per problematiche lavorative.';
+        formatted = 'AP ' +  day + '/' + month + '/' + year + ' ' + hours + '.' + minutes + 'h Utente RIFIUTA con disdetta regolare ' + (extraText20 ? '97' + extraText20 : "") + ' per problematiche lavorative.';
         break;
 		
 	      case "3":
