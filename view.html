@@ -16,29 +16,31 @@
 <body>
 
   <h2>Bookmarklet Code</h2>
-  <pre id="codice"></pre>
+
   <h4>bookmarklet_NOTE</h4>
+    <pre id="bookmarklet_NOTE"></pre>
   <script>
     fetch('bookmarklet_NOTE.js')
       .then(response => response.text())
       .then(data => {
         // Sicurezza: evita interpretazioni HTML
-        document.getElementById('codice').textContent = data;
+        document.getElementById('bookmarklet_NOTE').textContent = data;
       })
       .catch(error => {
-        document.getElementById('codice').textContent = "Errore nel caricamento: " + error;
+        document.getElementById('bookmarklet_NOTE').textContent = "Errore nel caricamento: " + error;
       });
   </script>
     <h4>bookmarklet_PRELIEVI</h4>
+	  <pre id="bookmarklet_PRELIEVI"></pre>
   <script>
     fetch('bookmarklet_PRELIEVI.js')
       .then(response => response.text())
       .then(data => {
         // Sicurezza: evita interpretazioni HTML
-        document.getElementById('codice').textContent = data;
+        document.getElementById('bookmarklet_PRELIEVI').textContent = data;
       })
       .catch(error => {
-        document.getElementById('codice').textContent = "Errore nel caricamento: " + error;
+        document.getElementById('bookmarklet_PRELIEVI').textContent = "Errore nel caricamento: " + error;
       });
   </script>
 </body>
