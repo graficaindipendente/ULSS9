@@ -17,7 +17,7 @@
 
   <h2>Bookmarklet Code</h2>
   <pre id="codice"></pre>
-
+  <h4>bookmarklet_NOTE</h4>
   <script>
     fetch('bookmarklet_NOTE.js')
       .then(response => response.text())
@@ -29,6 +29,17 @@
         document.getElementById('codice').textContent = "Errore nel caricamento: " + error;
       });
   </script>
-
+    <h4>bookmarklet_PRELIEVI</h4>
+  <script>
+    fetch('bookmarklet_PRELIEVI.js')
+      .then(response => response.text())
+      .then(data => {
+        // Sicurezza: evita interpretazioni HTML
+        document.getElementById('codice').textContent = data;
+      })
+      .catch(error => {
+        document.getElementById('codice').textContent = "Errore nel caricamento: " + error;
+      });
+  </script>
 </body>
 </html>
