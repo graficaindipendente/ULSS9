@@ -14,22 +14,6 @@
   </style>
 </head>
 <body>
-
-  <h2>Bookmarklet Code</h2>
-
-  <h4>bookmarklet_NOTE</h4>
-    <pre id="bookmarklet_NOTE"></pre>
-  <script>
-    fetch('bookmarklet_NOTE.js')
-      .then(response => response.text())
-      .then(data => {
-        // Sicurezza: evita interpretazioni HTML
-        document.getElementById('bookmarklet_NOTE').textContent = data;
-      })
-      .catch(error => {
-        document.getElementById('bookmarklet_NOTE').textContent = "Errore nel caricamento: " + error;
-      });
-  </script>
     <h4>bookmarklet_PRELIEVI</h4>
 	  <pre id="bookmarklet_PRELIEVI"></pre>
   <script>
