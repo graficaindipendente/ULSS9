@@ -1,8 +1,18 @@
-■  Prelievi B.go Trento B.go Roma
+■■■ MERCATI
+LUN → 
+MAR → Bovolone
+MER → Villafranca / Cologna / San Bonifacio / Domegliara
+GIO → Bussolengo / Bardolino / Nogara
+VEN → Isola Scala / San Giovanni Lupatoto / Sommacampagna
+SAB → Caprino / Legnago / Malcesine / Tregnago (ogni primo e terzo sabato) / Valeggio
+DOM → Zevio
+
+■■■
+Prelievi B.go Trento B.go Roma
 045 81 24 308 B.go Roma - 045 81 22 155 B.go Trento
 	
   ______
-■ PRELIEVI
+■■■ PRELIEVI
   ► Antigene prostatico specifico ESAME SANGUE
   ► Curva da carico / Glucosio / Insulina CUP
   ► Curva da PROLATTINA solo San Bonifacio e Legnago
@@ -22,4 +32,5 @@
 ► Ormone Anti-Mulleriano AMM NO LAB NO CUP
   _____
 
+■■■
 DISDETTE VIA MAIL disdetta.verona@aulss9.veneto.it disdetta.legnago@aulss9.veneto.it disdetta.bussolengo@aulss9.veneto.it 
