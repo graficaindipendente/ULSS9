@@ -4,8 +4,10 @@ MAR → Bovolone
 MER → Villafranca / Cologna / San Bonifacio / Domegliara
 GIO → Bussolengo / Bardolino / Nogara
 VEN → Isola Scala / San Giovanni Lupatoto / Sommacampagna
-SAB → Caprino / Legnago / Malcesine / Tregnago (ogni primo e terzo sabato) / Valeggio
+SAB → Caprino* / Legnago / Malcesine / Tregnago (ogni primo e terzo sabato) / Valeggio
 DOM → Zevio
+
+*lontano dal ULSS9
 
 ■■■
 Prelievi B.go Trento B.go Roma
