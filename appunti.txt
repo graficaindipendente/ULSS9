@@ -1,3 +1,5 @@
+CUP Negrar: 045 60 13 257
+
 ■■■ MERCATI
 LUN → 
 MAR → Bovolone
@@ -12,6 +14,9 @@ DOM → Zevio
 ■■■
 Prelievi B.go Trento B.go Roma
 045 81 24 308 B.go Roma - 045 81 22 155 B.go Trento
+Negrar
+Centralino: 045.6013111
+Segreteria:  045 6013286 (lunedì-venerdì dalle ore 9 alle ore 13)
 	
   ______
 ■■■ PRELIEVI
