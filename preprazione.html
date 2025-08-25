@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Preparazioni da CSV</title>
+  <style>
+    :root { --bg:#0b1320; --panel:#111a2b; --muted:#a8b3cf; --text:#e6ecff; --accent:#5b9cff; --accent-2:#7ad1ff; }
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg,#0b1320 0%,#0f1b31 60%,#0b1320 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";}
+    .wrap{max-width:1000px;margin:0 auto;padding:24px}
+    h1{font-size:clamp(20px,3vw,32px);margin:0 0 8px 0}
+    .sub{color:var(--muted);margin:0 0 18px 0}
+    .card{background:rgba(255,255,255,0.04);backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.07);border-radius:18px;box-shadow:0 10px 24px rgba(0,0,0,0.25);}
+    .row{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:900px){.row{grid-template-columns: 1.2fr 1fr;}}
+
+    .controls{padding:16px}
+    .input{display:flex;gap:10px;align-items:center}
+    .input input[type="text"]{flex:1;border:1px solid rgba(255,255,255,0.12);background:#0d1730;color:var(--text);border-radius:12px;padding:12px 14px;outline:none;font-size:16px}
+    .input input[type="text"]:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(91,156,255,0.18)}
+    .btn{cursor:pointer;border:1px solid rgba(255,255,255,0.14);background:#0f203f;color:var(--text);border-radius:12px;padding:10px 14px;font-weight:600}
+    .btn:hover{border-color:var(--accent);}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:10px}
+
+    .results{max-height:450px;overflow:auto;border-top:1px solid rgba(255,255,255,0.07)}
+    .item{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06);cursor:pointer}
+    .item:hover{background:rgba(255,255,255,0.05)}
+    .pill{background:rgba(122,209,255,0.15);color:var(--accent-2);padding:2px 8px;border-radius:999px;font-size:12px}
+
+    .details{padding:16px}
+    .details h3{margin:0 0 8px 0}
+    .details .section{margin:12px 0}
+    .muted{color:var(--muted)}
+    .hidden{display:none}
+    .footer{color:var(--muted);font-size:12px;margin-top:18px}
+    .drop{border:1px dashed rgba(255,255,255,0.18);border-radius:14px;padding:12px;display:flex;gap:10px;align-items:center;justify-content:space-between}
+    .drop:hover{border-color:var(--accent)}
+    .small{font-size:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Preparazioni da <code>preparazione.csv</code></h1>
+    <p class="sub">Cerca una prestazione e visualizza la preparazione (e l'eventuale colonna "Extra"). Puoi usare il file locale o metterlo nella stessa cartella della pagina.</p>
+
+    <div class="row">
+      <!-- Colonna sinistra: ricerca + risultati -->
+      <div class="card">
+        <div class="controls">
+          <div class="drop">
+            <div>
+              <strong>Carica CSV</strong>
+              <div class="small">Trascina qui o scegli un file. In alternativa, se il file <code>preparazione.csv</code> è nella stessa cartella, verrà caricato automaticamente.</div>
+            </div>
+            <label class="btn">
+              Scegli file
+              <input type="file" id="fileInput" accept=".csv" style="display:none" />
+            </label>
+          </div>
+
+          <div class="input" style="margin-top:12px">
+            <input id="search" type="text" placeholder="Cerca prestazione… (es. Colonscopia)" autocomplete="off" />
+            <button class="btn" id="clearBtn" title="Pulisci">Pulisci</button>
+          </div>
+          <div class="meta">
+            <span id="metaStatus">Nessun file caricato.</span>
+            <span id="count" class="pill hidden"></span>
+          </div>
+        </div>
+        <div id="results" class="results"></div>
+      </div>
+
+      <!-- Colonna destra: dettaglio -->
+      <div class="card">
+        <div class="details">
+          <h3 id="title">Nessuna prestazione selezionata</h3>
+          <div id="prep" class="section muted">Carica un CSV e seleziona una prestazione per vedere la preparazione.</div>
+          <div id="extraWrap" class="section hidden">
+            <strong>Extra</strong>
+            <div id="extra" class="muted"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">Formato atteso del CSV (intestazioni, in qualsiasi ordine): <code>Prestazione</code>, <code>Preparazione</code> e, facoltativa, <code>Extra</code>.
+      Separatori accettati: virgola, punto e virgola o tab. Le virgolette sono gestite.</div>
+  </div>
+
+<script>
+(function(){
+  const fileInput = document.getElementById('fileInput');
+  const searchInput = document.getElementById('search');
+  const results = document.getElementById('results');
+  const title = document.getElementById('title');
+  const prep = document.getElementById('prep');
+  const extraWrap = document.getElementById('extraWrap');
+  const extra = document.getElementById('extra');
+  const metaStatus = document.getElementById('metaStatus');
+  const count = document.getElementById('count');
+  const clearBtn = document.getElementById('clearBtn');
+
+  let rows = []; // oggetti {Prestazione, Preparazione, Extra}
+  let headers = [];
+  let map = { prestazione: null, preparazione: null, extra: null };
+
+  // --- CSV Parser minimal, supporta "," ";" o tab, e virgolette
+  function detectDelimiter(text){
+    const firstLine = text.split(/\r?\n/)[0] || '';
+    const candidates = [',',';','\t'];
+    let best = ','; let bestCount = 0;
+    for(const d of candidates){
+      const c = firstLine.split(d).length;
+      if(c>bestCount){best=d; bestCount=c}
+    }
+    return best;
+  }
+
+  function parseCSV(text){
+    const delim = detectDelimiter(text);
+    const lines = text.replace(/\r\n?/g,'\n').split('\n').filter(l=>l.trim().length>0);
+    const out = [];
+    const parseLine = (line)=>{
+      const res=[]; let cur=''; let inQ=false; for(let i=0;i<line.length;i++){
+        const ch=line[i];
+        if(ch==='"'){
+          if(inQ && line[i+1]==='"'){ cur+='"'; i++; } else { inQ=!inQ; }
+        } else if(ch===delim && !inQ){ res.push(cur); cur=''; } else { cur+=ch; }
+      }
+      res.push(cur);
+      return res;
+    };
+    for(const line of lines){ out.push(parseLine(line)); }
+    return out;
+  }
+
+  function normalizeHeader(h){ return (h||'').toString().trim().toLowerCase(); }
+
+  function buildRows(matrix){
+    if(!matrix.length) return [];
+    headers = matrix[0].map(h=>h.trim());
+    const lower = headers.map(normalizeHeader);
+    map.prestazione = lower.findIndex(h=>['prestazione','esame','nome','servizio'].includes(h));
+    map.preparazione = lower.findIndex(h=>['preparazione','istruzioni','preparazioni'].includes(h));
+    map.extra = lower.findIndex(h=>['extra','note','note aggiuntive'].includes(h));
+    if(map.prestazione===-1 || map.preparazione===-1){
+      throw new Error('Intestazioni mancanti. Servono almeno "Prestazione" e "Preparazione".');
+    }
+    const list = [];
+    for(let i=1;i<matrix.length;i++){
+      const row=matrix[i];
+      if(!row || row.length===0) continue;
+      const obj={
+        Prestazione: (row[map.prestazione]||'').trim(),
+        Preparazione: (row[map.preparazione]||'').trim(),
+        Extra: map.extra>-1 ? (row[map.extra]||'').trim() : ''
+      };
+      if(obj.Prestazione) list.push(obj);
+    }
+    return list;
+  }
+
+  function renderList(list){
+    results.innerHTML='';
+    const q = searchInput.value.trim().toLowerCase();
+    const filtered = !q ? list : list.filter(r => r.Prestazione.toLowerCase().includes(q));
+    count.classList.toggle('hidden', filtered.length===0);
+    count.textContent = filtered.length + ' risultati';
+
+    if(filtered.length===0){
+      results.innerHTML = '<div class="item"><span class="muted">Nessun risultato.</span></div>';
+      return;
+    }
+    const frag = document.createDocumentFragment();
+    filtered.forEach(r=>{
+      const div = document.createElement('div');
+      div.className='item';
+      div.innerHTML = `<div class="pill">Prestazione</div><div><div><strong>${escapeHtml(r.Prestazione)}</strong></div><div class="muted" style="font-size:12px;max-width:70ch;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeHtml(snippet(r.Preparazione))}</div></div>`;
+      div.addEventListener('click', ()=> selectItem(r));
+      frag.appendChild(div);
+    });
+    results.appendChild(frag);
+  }
+
+  function selectItem(item){
+    title.textContent = item.Prestazione || 'Prestazione';
+    prep.textContent = item.Preparazione || '—';
+    if(item.Extra){
+      extraWrap.classList.remove('hidden');
+      extra.textContent = item.Extra;
+    } else {
+      extraWrap.classList.add('hidden');
+      extra.textContent = '';
+    }
+    // evidenzia selezione (facoltativo)
+    Array.from(results.children).forEach(el=> el.style.outline='');
+  }
+
+  function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m])); }
+  function snippet(s){ s=s||''; return s.length>120 ? s.slice(0,120)+'…' : s; }
+
+  function handleText(text){
+    try{
+      const matrix = parseCSV(text);
+      rows = buildRows(matrix);
+      metaStatus.textContent = `Caricate ${rows.length} prestazioni.`;
+      renderList(rows);
+    }catch(err){
+      console.error(err);
+      metaStatus.textContent = 'Errore: ' + err.message;
+      results.innerHTML = '';
+      rows = [];
+      count.classList.add('hidden');
+    }
+  }
+
+  // Fetch automatico se il file è affiancato alla pagina
+  async function tryAutoFetch(){
+    try{
+      metaStatus.textContent = 'Cerco "preparazione.csv" nella stessa cartella…';
+      const res = await fetch('preparazione.csv',{cache:'no-store'});
+      if(!res.ok) throw new Error('non trovato');
+      const text = await res.text();
+      handleText(text);
+    }catch(_){
+      metaStatus.textContent = 'Nessun file caricato.';
+    }
+  }
+
+  // Drag & drop
+  const drop = document.querySelector('.drop');
+  ;['dragenter','dragover'].forEach(evt=> drop.addEventListener(evt, e=>{ e.preventDefault(); drop.style.borderColor='var(--accent)'; }));
+  ;['dragleave','drop'].forEach(evt=> drop.addEventListener(evt, e=>{ e.preventDefault(); drop.style.borderColor='rgba(255,255,255,0.18)'; }));
+  drop.addEventListener('drop', e=>{
+    const file = e.dataTransfer.files && e.dataTransfer.files[0];
+    if(file) readFile(file);
+  });
+
+  fileInput.addEventListener('change', e=>{
+    const file = e.target.files && e.target.files[0];
+    if(file) readFile(file);
+  });
+
+  function readFile(file){
+    const reader = new FileReader();
+    reader.onload = ev => handleText(ev.target.result);
+    reader.readAsText(file, 'utf-8');
+    metaStatus.textContent = `Caricato file: ${file.name}`;
+  }
+
+  searchInput.addEventListener('input', ()=> renderList(rows));
+  clearBtn.addEventListener('click', ()=>{ searchInput.value=''; renderList(rows); searchInput.focus(); });
+
+  // Enter = se match esatto, apri
+  searchInput.addEventListener('keydown', e=>{
+    if(e.key==='Enter'){
+      const q = searchInput.value.trim().toLowerCase();
+      const exact = rows.find(r=> r.Prestazione.toLowerCase()===q);
+      if(exact){ selectItem(exact); }
+    }
+  });
+
+  // Avvio
+  tryAutoFetch();
+})();
+</script>
+</body>
+</html>
