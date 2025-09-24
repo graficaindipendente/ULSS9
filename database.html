@@ -100,7 +100,7 @@
 
   let rows = []; // oggetti {Prestazione, Preparazione, Extra}
   let headers = [];
-  let map = { prestazione: null, preparazione: null, extra: null };
+  let map = {prestazione: null, preparazione: null, extra: null, categoria: null};
 
   // --- CSV Parser minimal, supporta "," ";" o tab, e virgolette
   function detectDelimiter(text){
@@ -138,9 +138,11 @@
     if(!matrix.length) return [];
     headers = matrix[0].map(h=>h.trim());
     const lower = headers.map(normalizeHeader);
-    map.prestazione = lower.findIndex(h=>['prestazione','esame','nome','servizio'].includes(h));
-    map.preparazione = lower.findIndex(h=>['preparazione','istruzioni','preparazioni'].includes(h));
-    map.extra = lower.findIndex(h=>['extra','note','note aggiuntive'].includes(h));
+    map.prestazione = lower.findIndex(h => ['prestazione', 'esame', 'nome', 'servizio'].includes(h));
+    map.preparazione = lower.findIndex(h => ['preparazione', 'istruzioni', 'preparazioni'].includes(h));
+    map.extra = lower.findIndex(h => ['extra', 'note', 'note aggiuntive'].includes(h));
+    map.categoria = lower.findIndex(h => ['categoria', 'gruppo', 'tipo'].includes(h));
+
     if(map.prestazione===-1 || map.preparazione===-1){
       throw new Error('Intestazioni mancanti. Servono almeno "Prestazione" e "Preparazione".');
     }
@@ -148,10 +150,11 @@
     for(let i=1;i<matrix.length;i++){
       const row=matrix[i];
       if(!row || row.length===0) continue;
-      const obj={
-        Prestazione: (row[map.prestazione]||'').trim(),
-        Preparazione: (row[map.preparazione]||'').trim(),
-        Extra: map.extra>-1 ? (row[map.extra]||'').trim() : ''
+      const obj = {
+        Prestazione: (row[map.prestazione] || '').trim(),
+        Preparazione: (row[map.preparazione] || '').trim(),
+        Extra: map.extra > -1 ? (row[map.extra] || '').trim() : '',
+        Categoria: map.categoria > -1 ? (row[map.categoria] || '').trim() : ''
       };
       if(obj.Prestazione) list.push(obj);
     }
@@ -173,26 +176,34 @@
     filtered.forEach(r=>{
       const div = document.createElement('div');
       div.className='item';
-      div.innerHTML = `<div class="pill">Prestazione</div><div><div><strong>${escapeHtml(r.Prestazione)}</strong></div><div class="muted" style="font-size:12px;max-width:70ch;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeHtml(snippet(r.Preparazione))}</div></div>`;
+      div.innerHTML = `
+  <div class="pill">${escapeHtml(r.Categoria || 'Prestazione')}</div>
+  <div>
+    <div><strong>${escapeHtml(r.Prestazione)}</strong></div>
+    <div class="muted" style="font-size:12px;max-width:70ch;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+      ${escapeHtml(snippet(r.Preparazione))}
+    </div>
+  </div>
+`;
       div.addEventListener('click', ()=> selectItem(r));
       frag.appendChild(div);
     });
     results.appendChild(frag);
   }
 
-  function selectItem(item){
-    title.textContent = item.Prestazione || 'Prestazione';
+  function selectItem(item) {
+    title.innerHTML = `${escapeHtml(item.Prestazione)}<div class="pill" style="margin-top:4px">${escapeHtml(item.Categoria || '')}</div>`;
     prep.textContent = item.Preparazione || '—';
-    if(item.Extra){
+    if (item.Extra) {
       extraWrap.classList.remove('hidden');
       extra.textContent = item.Extra;
     } else {
       extraWrap.classList.add('hidden');
       extra.textContent = '';
     }
-    // evidenzia selezione (facoltativo)
-    Array.from(results.children).forEach(el=> el.style.outline='');
+    Array.from(results.children).forEach(el => el.style.outline = '');
   }
+
 
   function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m])); }
   function snippet(s){ s=s||''; return s.length>120 ? s.slice(0,120)+'…' : s; }
