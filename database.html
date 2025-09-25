@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DATABASE ULSS9</title>
+  <title>Wiki Ulss9 Scaligera</title>
   <style>
     :root { --bg:#0b1320; --panel:#111a2b; --muted:#a8b3cf; --text:#e6ecff; --accent:#5b9cff; --accent-2:#7ad1ff; }
     html,body{height:100%}
@@ -38,11 +38,12 @@
     .drop:hover{border-color:var(--accent)}
     .small{font-size:12px;color:var(--muted)}
   </style>
+    <link rel="icon" type="img/png" href="favicon.ico">
 </head>
 <body>
   <div class="wrap">
-    <h1>DATABASE ULSS9</h1>
-    <p class="sub">Cerca una prestazione e visualizza la preparazione (e l'eventuale colonna "Extra"). Puoi usare il file locale o metterlo nella stessa cartella della pagina.</p>
+    <h1><img src="logob.PNG" alt=""> Wiki Ulss9 Scaligera</h1>
+    <p class="sub">Cerca un'informazione e visualizza l'informazione annessa. Puoi usare un file locale trascinandolo nel form di caricamento.</p>
 
     <div class="row">
       <!-- Colonna sinistra: ricerca + risultati -->
@@ -51,17 +52,17 @@
           <div class="drop">
             <div>
               <strong>Carica CSV</strong>
-              <div class="small">Trascina qui o scegli un file. In alternativa, se il file <code>DATABASE.csv</code> è nella stessa cartella, verrà caricato automaticamente.</div>
+              <div class="small">Trascina qui un file CSV. In alternativa verrà caricato automaticamente il Database Google.</div>
             </div>
             <label class="btn">
-              Scegli file
+              Carica
               <input type="file" id="fileInput" accept=".csv" style="display:none" />
             </label>
           </div>
 
           <div class="input" style="margin-top:12px">
-            <input id="search" type="text" placeholder="Cerca… (es. Bovolone)" autocomplete="on" />
-            <button class="btn" id="clearBtn" title="Pulisci">Pulisci</button>
+            <input id="search" type="text" placeholder="Cerca… (es. Epatite...)" autocomplete="on" />
+            <button class="btn" id="clearBtn" title="Pulisci">Reset</button>
           </div>
           <div class="meta">
             <span id="metaStatus">Nessun file caricato.</span>
@@ -74,15 +75,15 @@
       <!-- Colonna destra: dettaglio -->
       <div class="card">
         <div class="details">
-          <h3 id="title">Nessuna prestazione selezionata</h3>
-          <div id="prep" class="section muted">Carica un CSV e seleziona una prestazione per vedere la preparazione.</div>
+          <h3 id="title">Nessuna info selezionata</h3>
+          <div id="prep" class="section muted">Cerca tramite parole chiavi l'informazione e verrà visualizzata qui.</div>
           <div id="extraWrap" class="section hidden">
-            <strong>Extra</strong>
+            <strong>Altro</strong>
             <div id="extra" class="muted"></div>
-          </div>
+          </div>Aggiungi, modifica, edita qui: <a href="https://docs.google.com/spreadsheets/d/1XNreqXoGt0At0Me_CEO3q0IUvAp9rxZ712mEK3wimBw/edit?pli=1&gid=1531853917#gid=1531853917" target="_blank" style="color:var(--accent)">Database</a>
         </div>
       </div>
-    </div>
+    </div> <h6>pagina creata da Alessandro Piovan agosto25</h6>
   </div>
 
 <script>
@@ -183,6 +184,7 @@
     <div class="muted" style="font-size:12px;max-width:70ch;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
       ${escapeHtml(snippet(r.Preparazione))}
     </div>
+
   </div>
 `;
       div.addEventListener('click', ()=> selectItem(r));
@@ -276,5 +278,7 @@
   tryAutoFetch();
 })();
 </script>
+
+
 </body>
 </html>
