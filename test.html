@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Data 6 mesi fa</title>
+</head>
+
+<body>
+    <h2>Data di 6 mesi fa:</h2>
+    <p id="data6mesi"></p>
+
+    <script>
+        // Ottieni la data odierna
+        const oggi = new Date();
+
+        // Crea una copia della data
+        const data6mesiFa = new Date(oggi);
+        data6mesiFa.setMonth(data6mesiFa.getMonth() - 6);
+
+        // Opzioni di formattazione in italiano (es: "4 maggio 2025")
+        const opzioni = {day: 'numeric', month: 'long', year: 'numeric'};
+        const dataFormattata = data6mesiFa.toLocaleDateString('it-IT', opzioni);
+
+        // Mostra la data nel paragrafo
+        document.getElementById("data6mesi").textContent = dataFormattata;
+    </script>
+</body>
+
+</html>
