@@ -14,74 +14,74 @@
       --accent: #053c8f;
       --accent-2: #00b8d9;
     }
-
+  
     html,
     body {
       height: 100%;
     }
-
+  
     body {
       margin: 0;
       background: linear-gradient(180deg, #f8fafc 0%, #f2f6fa 60%, #f8fafc 100%);
       color: var(--text);
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
     }
-
+  
     .wrap {
       max-width: 1000px;
       margin: 0 auto;
       padding: 24px;
     }
-
+  
     h1 {
       font-size: clamp(20px, 3vw, 32px);
       margin: 0 0 8px 0;
       color: var(--text);
     }
-
+  
     .sub {
       color: var(--muted);
       margin: 0 0 18px 0;
     }
-
+  
     .card {
       background: var(--panel);
       border: 1px solid #e5e7eb;
       border-radius: 18px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
-
-        .cardtop {
+  
+    .cardtop {
       background: var(--panel);
-      border: 1px solid #e5e7eb;
-
+      border: 1px solid #f80202;
+  
       /* border: 7px solid #ddebff; */
       border-radius: 18px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
-
+  
     .row {
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
     }
-
+  
     @media (min-width: 00px) {
       .row {
         grid-template-columns: 1fr 1fr;
       }
     }
-
+  
     .controls {
       padding: 16px;
     }
-
+  
     .input {
       display: flex;
       gap: 10px;
       align-items: center;
     }
-
+  
     .input input[type="text"] {
       flex: 1;
       border: 1px solid #cfd8e3;
@@ -93,12 +93,12 @@
       font-size: 16px;
       transition: box-shadow 0.2s, border 0.2s;
     }
-
+  
     .input input[type="text"]:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 4px rgba(43, 127, 255, 0.15);
     }
-
+  
     .btn {
       cursor: pointer;
       border: 1px solid #cfd8e3;
@@ -109,12 +109,12 @@
       font-weight: 500;
       transition: background 0.2s, border 0.2s;
     }
-
+  
     .btn:hover {
       background: #d9e8ff;
       border-color: var(--accent);
     }
-
+  
     .meta {
       display: flex;
       gap: 10px;
@@ -123,13 +123,13 @@
       font-size: 13px;
       margin-top: 10px;
     }
-
+  
     .results {
       max-height: 450px;
       overflow: auto;
       border-top: 1px solid #e5e7eb;
     }
-
+  
     .item {
       display: flex;
       align-items: flex-start;
@@ -139,11 +139,11 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-
+  
     .item:hover {
       background: #f2f7ff;
     }
-
+  
     .pill {
       background: rgba(43, 127, 255, 0.1);
       color: var(--accent);
@@ -151,34 +151,34 @@
       border-radius: 999px;
       font-size: 12px;
     }
-
+  
     .details {
       padding: 16px;
     }
-
+  
     .details h3 {
       margin: 0 0 8px 0;
       color: var(--text);
     }
-
+  
     .details .section {
       margin: 12px 0;
     }
-
+  
     .muted {
       color: var(--muted);
     }
-
+  
     .hidden {
       display: none;
     }
-
+  
     .footer {
       color: var(--muted);
       font-size: 12px;
       margin-top: 18px;
     }
-
+  
     .drop {
       border: 1px dashed #cfd8e3;
       border-radius: 14px;
@@ -189,17 +189,16 @@
       justify-content: space-between;
       transition: border-color 0.2s;
     }
-
+  
     .drop:hover {
       border-color: var(--accent);
     }
-
+  
     .small {
       font-size: 12px;
       color: var(--muted);
     }
   </style>
-
     <link rel="icon" type="img/png" href="favicon.ico">
 </head>
 <body>
@@ -295,7 +294,7 @@
     </script>
       </div></div>
       </div>
-        <div class="card">
+        <div class="cardtop">
           <div class="details">
             <div id="prep" class="section muted">
               <h3 id="title">Novità</h3>
@@ -317,15 +316,17 @@
         
           </div>
         </div>
-            </div>
+
 <br>
 <div class="card">
   <div class="details">
-                <div id="prep" class="section muted">
-<iframe src="https://www.google.com/maps/d/u/1/embed?mid=1UTGK56_naINGiuShr_lI7YLJB6pJpq8&ehbc=2E312F" width="100%"
-  height="480"></iframe>
-    </div></div></div>
+    <div id="prep" class="section muted">
+      <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1UTGK56_naINGiuShr_lI7YLJB6pJpq8&ehbc=2E312F"
+        width="100%" height="480"></iframe>
     </div>
+  </div>
+</div>
+</div>
 
 
 
