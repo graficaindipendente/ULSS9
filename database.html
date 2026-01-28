@@ -248,24 +248,25 @@
 <br>
 <div class="card">
   <div class="details"> <p>Le impegnative datate prima del 
-  <b><span id="data6mesi"></span></b> sono scadute.
+  <b><span id="data180GiorniFa"></span></b> sono scadute.
 
   
-  <script>
-    // Ottieni la data odierna
-    const oggi = new Date();
+<script>
+  // Ottieni la data odierna
+  const oggi = new Date();
 
-    // Crea una copia della data
-    const data6mesiFa = new Date(oggi);
-    data6mesiFa.setMonth(data6mesiFa.getMonth() - 6);
+  // Sottrai 180 giorni
+  const data180GiorniFa = new Date(oggi);
+  data180GiorniFa.setDate(data180GiorniFa.getDate() - 180);
 
-    // Opzioni di formattazione in italiano (es: "4 maggio 2025")
-    const opzioni = {day: 'numeric', month: 'long', year: 'numeric'};
-    const dataFormattata = data6mesiFa.toLocaleDateString('it-IT', opzioni);
+  // Opzioni di formattazione in italiano (es: "4 maggio 2025")
+  const opzioni = {day: 'numeric', month: 'long', year: 'numeric'};
+  const dataFormattata = data180GiorniFa.toLocaleDateString('it-IT', opzioni);
 
-    // Mostra la data nel paragrafo
-    document.getElementById("data6mesi").textContent = dataFormattata;
-  </script>     <b>Per editare il database, clicca qui: <a
+  // Mostra la data nel paragrafo
+  document.getElementById("data180GiorniFa").textContent = dataFormattata;
+</script>
+  <b>Per editare il database, clicca qui: <a
       href="https://docs.google.com/spreadsheets/d/1XNreqXoGt0At0Me_CEO3q0IUvAp9rxZ712mEK3wimBw/edit?pli=1&gid=1531853917#gid=1531853917"
       target="_blank" style="color:var(--accent)">Database</a> </b></p>
   </div></div>
