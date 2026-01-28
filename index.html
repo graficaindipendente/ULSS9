@@ -37,23 +37,7 @@
 	
 
 <br>  
-<textarea id="contenuto" rows="15" cols="60"></textarea>
 
-<script>
-  // Cambia 'appunti.txt' con il nome del tuo file
-  fetch('appunti.txt')
-    .then(response => {
-      if (!response.ok) throw new Error('Errore nel caricamento');
-      return response.text();
-    })
-    .then(data => {
-      document.getElementById('contenuto').value = data;
-    })
-    .catch(error => {
-      console.error(error);
-      document.getElementById('contenuto').value = 'Errore nel caricamento del file.';
-    });
-</script>
 
 <a class="button button-link" href="https://ai.innlab.it/en/outstanding/user/phonesmainlogin/">InnLab Voip</a>
 <button onclick="innlab1()">usrℹ️</button>
