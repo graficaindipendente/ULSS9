@@ -5,9 +5,7 @@
 045 67 121 74 Laboratorio D4 (12h-16h)
 
 045 60 13 257 CUP Negrar
-045 60 13 111 Centralino Negrar
-045 60 13 286 Segreteria Negrar (9h-13h)
-
+045 64 49 270 CUP Peschiera
 
 𝗗𝗶𝘀𝗱𝗲𝘁𝘁𝗲 𝗣𝗜𝗖 𝘃𝗶𝗮 𝗠𝗮𝗶𝗹
 disdetta.verona@aulss9.veneto.it
