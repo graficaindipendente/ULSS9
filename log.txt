@@ -1,5 +1,6 @@
-11/02/2026 ■ continua disservizio SMS nei prelievi
-10/02/2026 ■ Disservizio SMS nei prelievi
+12/02/2026 ■ Polling KO SMS
+11/02/2026 ■ Polling KO SMS
+10/02/2026 ■ Polling KO SMS
 02/02/2026 ■ MARZANA
 Mercoledì 11 febbraio CHIUSO + Mercoledì 25 febbraio CHIUSO
 Mercoledì 11 marzo CHIUSO + Mercoledì 25 marzo CHIUSO
@@ -16,4 +17,4 @@ Le info sono state aggiunte cercando il nome/luogo della struttura
 si uniranno in un unico centro presso la nuova sede di Verona in Via Basso Acquar 113. 𝗔 𝗣𝗔𝗥𝗧𝗜𝗥𝗘 𝗗𝗔𝗟 𝟮𝟳 𝗚𝗘𝗡𝗡𝗔𝗜𝗢 𝟮𝟬𝟮𝟲
 07/01/2026 ■ Novità AOUI Punto Prelievi
 Borgo Roma ci ha chiamato per rammentare la procedura di accesso ai Centri Prelievi: è possibile prenotare online
-o accedere liberamente presentandosi di persona dalle ore 07.30 alle ore 10.00 dal lunedì al venerdì.
+11/02/2026 ■ Polling KO SMS
